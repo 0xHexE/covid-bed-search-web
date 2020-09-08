@@ -24,8 +24,13 @@ export function MainTableViewer() {
           }
         }
 
-        .app-menu {
+        .app-menu,
+        .promo {
           width: 260px;
+        }
+
+        .promo {
+          margin-top: 12px;
         }
 
         .main-container {
@@ -38,10 +43,21 @@ export function MainTableViewer() {
           }
         }
 
+        .promo-2 {
+          display: none;
+        }
+
         @media (max-width: 799px) {
-          .app-menu {
+          .app-menu,
+          .promo,
+          .promo-2 {
             width: 100%;
             margin-bottom: 24px;
+            display: inherit;
+          }
+
+          .promo {
+            display: none;
           }
         }
 
@@ -62,6 +78,12 @@ export function MainTableViewer() {
             <Menu.Item key="hospital-beds">Hospital Beds</Menu.Item>
             <Menu.Item key="ventilators">Ventilators</Menu.Item>
           </Menu>
+
+          <img
+            src="https://satejpatil.com/wp-content/uploads/2020/02/suggistions.jpg"
+            className="promo"
+            alt="Promo"
+          />
         </div>
         <div className="main-container">
           {!data ? (
@@ -74,6 +96,12 @@ export function MainTableViewer() {
               <Statistics input={data.data} statistics={data.statistics} />
             </>
           )}
+
+          <img
+            src="https://satejpatil.com/wp-content/uploads/2020/02/suggistions.jpg"
+            className="promo-2"
+            alt="Promo"
+          />
         </div>
       </div>
     </>
