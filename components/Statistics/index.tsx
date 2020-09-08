@@ -45,7 +45,13 @@ const columns = [
   },
 ];
 
-export function Statistics({ input }: { input: any[] }) {
+export function Statistics({
+  input,
+  statistics,
+}: {
+  input: any[];
+  statistics: { [props: string]: number };
+}) {
   return (
     <>
       <style jsx global>{`
@@ -56,17 +62,17 @@ export function Statistics({ input }: { input: any[] }) {
       <Row>
         <Col sm={24 / 3} xs={24}>
           <Card>
-            <Statistic title="Total" value={112893} />
+            <Statistic title="Total" value={statistics.total} />
           </Card>
         </Col>
         <Col sm={24 / 3} xs={24}>
           <Card>
-            <Statistic title="Occupied" value={112893} />
+            <Statistic title="Occupied" value={statistics.occupied} />
           </Card>
         </Col>
         <Col sm={24 / 3} xs={24}>
           <Card>
-            <Statistic title="Vacant" value={112893} />
+            <Statistic title="Vacant" value={statistics.vacant} />
           </Card>
         </Col>
       </Row>

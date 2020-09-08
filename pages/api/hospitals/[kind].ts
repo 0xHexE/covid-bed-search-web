@@ -5,6 +5,11 @@ export default function (req, res) {
   setTimeout(() => {
     res.end(
       JSON.stringify({
+        statistics: {
+          total: Math.floor(Math.random() * 200),
+          occupied: Math.floor(Math.random() * 200),
+          vacant: Math.floor(Math.random() * 200),
+        },
         data: [
           {
             key: '1',

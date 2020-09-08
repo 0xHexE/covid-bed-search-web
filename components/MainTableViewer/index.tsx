@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Statistics } from '../Statistics';
 import { Card, Menu, Skeleton } from 'antd';
 import useSWR from 'swr';
@@ -71,7 +71,7 @@ export function MainTableViewer() {
           ) : (
             <>
               <h1 className="app-title">{kind.replace('-', ' ')}</h1>
-              <Statistics input={data.data} />
+              <Statistics input={data.data} statistics={data.statistics} />
             </>
           )}
         </div>
