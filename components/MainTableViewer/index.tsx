@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Statistics } from '../Statistics';
 import { Menu, Skeleton } from 'antd';
 import useSWR from 'swr';
@@ -16,6 +16,12 @@ export function MainTableViewer() {
       <style jsx global>{`
         .content-wrapper {
           display: flex;
+        }
+
+        @media (max-width: 600px) {
+          .content-wrapper {
+            flex-direction: column;
+          }
         }
 
         .app-menu {
