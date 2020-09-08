@@ -54,17 +54,17 @@ export function Statistics({ input }: { input: any[] }) {
         }
       `}</style>
       <Row>
-        <Col span={24 / 3} xs={24}>
+        <Col sm={24 / 3} xs={24}>
           <Card>
             <Statistic title="Total" value={112893} />
           </Card>
         </Col>
-        <Col span={24 / 3} xs={24}>
+        <Col sm={24 / 3} xs={24}>
           <Card>
             <Statistic title="Occupied" value={112893} />
           </Card>
         </Col>
-        <Col span={24 / 3} xs={24}>
+        <Col sm={24 / 3} xs={24}>
           <Card>
             <Statistic title="Vacant" value={112893} />
           </Card>

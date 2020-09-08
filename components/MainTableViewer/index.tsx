@@ -18,7 +18,7 @@ export function MainTableViewer() {
           display: flex;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 799px) {
           .content-wrapper {
             flex-direction: column;
           }
@@ -32,13 +32,13 @@ export function MainTableViewer() {
           flex-grow: 1;
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 799px) {
           .main-container {
             margin-left: 24px;
           }
         }
 
-        @media (max-width: 599px) {
+        @media (max-width: 799px) {
           .app-menu {
             width: 100%;
             margin-bottom: 24px;

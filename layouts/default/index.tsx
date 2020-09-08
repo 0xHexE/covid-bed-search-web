@@ -34,7 +34,7 @@ function DefaultLayout({ children, t }: DefaultLayoutProps & WithTranslation) {
           margin-top: 64px;
         }
 
-        @media (min-width: 599px) {
+        @media (min-width: 799px) {
           .site-layout {
             padding: 0 24px;
           }
