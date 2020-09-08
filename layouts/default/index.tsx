@@ -22,16 +22,26 @@ function DefaultLayout({ children, t }: DefaultLayoutProps & WithTranslation) {
         .layout {
           min-height: 100vh;
         }
+
+        .app-header {
+          position: fixed;
+          z-index: 1;
+          width: 100%;
+          background-color: #fff;
+        }
+
+        .site-layout {
+          margin-top: 64px;
+        }
+
+        @media (min-width: 599px) {
+          .site-layout {
+            padding: 0 24px;
+          }
+        }
       `}</style>
       <Layout className="layout">
-        <Header
-          style={{
-            position: 'fixed',
-            zIndex: 1,
-            width: '100%',
-            backgroundColor: '#FFF',
-          }}
-        >
+        <Header className="app-header">
           <Menu
             mode="horizontal"
             defaultSelectedKeys={[router.pathname]}
@@ -43,10 +53,7 @@ function DefaultLayout({ children, t }: DefaultLayoutProps & WithTranslation) {
             <Menu.Item key="/faqs">{t('FAQs')}</Menu.Item>
           </Menu>
         </Header>
-        <Content
-          className="site-layout"
-          style={{ padding: '0 24px', marginTop: 64 }}
-        >
+        <Content className="site-layout">
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}

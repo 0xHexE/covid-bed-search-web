@@ -48,24 +48,29 @@ const columns = [
 export function Statistics({ input }: { input: any[] }) {
   return (
     <>
-      <Row gutter={16}>
-        <Col span={6}>
+      <style jsx global>{`
+        .card-container {
+          margin-top: 32px;
+        }
+      `}</style>
+      <Row>
+        <Col span={24 / 3}>
           <Card>
             <Statistic title="Total" value={112893} />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={24 / 3}>
           <Card>
             <Statistic title="Occupied" value={112893} />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={24 / 3}>
           <Card>
             <Statistic title="Vacant" value={112893} />
           </Card>
         </Col>
       </Row>
-      <div style={{ marginTop: '24px' }}>
+      <div className="card-container">
         <Card bodyStyle={{ padding: 0 }}>
           <PageHeader
             className="site-page-header"
