@@ -32,9 +32,15 @@ function DefaultLayout({ children, t }: DefaultLayoutProps & WithTranslation) {
             backgroundColor: '#FFF',
           }}
         >
-          <Menu mode="horizontal" onClick={(e) => {}}>
-            <Menu.Item key="1">{t('beds')}</Menu.Item>
-            <Menu.Item key="2">{t('FAQs')}</Menu.Item>
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={[router.pathname]}
+            onClick={(e) => {
+              router.push(e.key as string);
+            }}
+          >
+            <Menu.Item key="/">{t('beds')}</Menu.Item>
+            <Menu.Item key="/faqs">{t('FAQs')}</Menu.Item>
           </Menu>
         </Header>
         <Content

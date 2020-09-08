@@ -12,7 +12,7 @@ const columns = [
         <br />
         {row.address}
         <br />
-        Last updated at {row.lastUpdated.toDateString()}
+        Last updated at {new Date(row.lastUpdated).toDateString()}
         <br />
         <PhoneOutlined />
         &nbsp;
@@ -45,43 +45,7 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    type: 'PVT',
-    address: 'New York No. 1 Lake Park',
-    lastUpdated: new Date(),
-    contactNumber: ['8788339915'],
-    location: [12, 123],
-    total: 12,
-    vacant: 123,
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    type: 'PVT',
-    address: 'London No. 1 Lake Park',
-    lastUpdated: new Date(),
-    contactNumber: ['8788339915'],
-    location: [12, 123],
-    total: 12,
-    vacant: 123,
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    type: 'PVT',
-    address: 'Sidney No. 1 Lake Park',
-    lastUpdated: new Date(),
-    contactNumber: ['8788339915'],
-    location: [12, 123],
-    total: 12,
-    vacant: 123,
-  },
-];
-
-export function Statistics() {
+export function Statistics({ input }: { input: any[] }) {
   return (
     <>
       <Row gutter={16}>
@@ -115,7 +79,7 @@ export function Statistics() {
             }
           />
         </Card>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={input} />
       </div>
     </>
   );
