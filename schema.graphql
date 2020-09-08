@@ -1,0 +1,54 @@
+type HospitalEntry {
+    name: String!
+    location: LocationEntry!
+    link: String
+    mobileNumbers: [String]
+    type: String!
+    beds: [BedsEntity] @relation
+    lastUpdated: Time
+}
+
+type BedsEntity {
+    occupied: Int!
+    kind: String
+    id: String
+    type: String!
+    userAssigned: String!
+}
+
+type LocationEntry @embedded {
+    lat: Float!
+    lng: Float!
+}
+
+type Query {
+    hospitals: [HospitalEntry]
+    beds: [BedsEntity]
+}
+
+# Ignored
+# Fauna DB Graphql https://docs.fauna.com/fauna/current/api/graphql/
+scalar Time
+
+directive @collection(
+    name: String!
+) on OBJECT
+
+directive @embedded on OBJECT
+
+directive @relation(
+    name: String
+) on FIELD_DEFINITION
+
+directive @index(
+    name: String
+) on FIELD_DEFINITION
+
+directive @resolver(
+    name: String
+    paginated: Boolean
+) on FIELD_DEFINITION
+
+directive @unique(
+    name: String
+) on FIELD_DEFINITION
