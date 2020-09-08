@@ -44,6 +44,10 @@ export function MainTableViewer() {
             margin-bottom: 24px;
           }
         }
+
+        .app-title {
+          text-transform: capitalize;
+        }
       `}</style>
       <div className="content-wrapper">
         <div>
@@ -65,7 +69,10 @@ export function MainTableViewer() {
               <Skeleton active />
             </Card>
           ) : (
-            <Statistics input={data.data} />
+            <>
+              <h1 className="app-title">{kind.replace('-', ' ')}</h1>
+              <Statistics input={data.data} />
+            </>
           )}
         </div>
       </div>
