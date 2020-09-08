@@ -2,8 +2,7 @@ export default function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
 
-  setTimeout(() => {
-    res.end(
+  res.end(
       JSON.stringify({
         statistics: {
           total: Math.floor(Math.random() * 200),
@@ -46,6 +45,5 @@ export default function (req, res) {
           },
         ],
       })
-    );
-  }, 1000);
+  );
 }
