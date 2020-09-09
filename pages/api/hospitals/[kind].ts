@@ -46,8 +46,6 @@ export default async function (req, res) {
     )
   );
 
-  console.log(result.data);
-
   res.end(
     JSON.stringify({
       statistics: {
