@@ -1,6 +1,52 @@
-export default function (req, res) {
+import faunadb, { query as q } from 'faunadb';
+
+export interface FaunaResponse<T> {
+  ts: number;
+  data: T;
+}
+
+export interface Hospital {
+  key: string;
+  name: string;
+  type: string;
+  address: string;
+  lastUpdated: string;
+  contactNumber: number[];
+  location: number[];
+  total: number;
+  vacant: number;
+}
+
+export default async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
+
+  const adminClient = new faunadb.Client({
+    secret: process.env.FAUNA_DB_ACCESS_KEY,
+  });
+
+  // Map(
+  //     Paginate(
+  //         Match(Index("all_hospitals"))
+  //     ),
+  //     Lambda("X", Get(Var("X")))
+  // )
+
+  const result = await adminClient.query<{ data: FaunaResponse<Hospital[]>[] }>(
+    q.Map(
+      // iterate each item in result
+      q.Paginate(
+        // make paginatable
+        q.Match(
+          // query index
+          q.Index('all_hospitals') // specify source
+        )
+      ),
+      (ref) => q.Get(ref) // lookup each result by its reference
+    )
+  );
+
+  console.log(result.data);
 
   res.end(
     JSON.stringify({
@@ -9,41 +55,7 @@ export default function (req, res) {
         occupied: Math.floor(Math.random() * 200),
         vacant: Math.floor(Math.random() * 200),
       },
-      data: [
-        {
-          key: '1',
-          name: 'John Brown',
-          type: 'PVT',
-          address: 'New York No. 1 Lake Park',
-          lastUpdated: new Date(),
-          contactNumber: ['8788339915'],
-          location: [12, 123],
-          total: 12,
-          vacant: 123,
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          type: 'PVT',
-          address: 'London No. 1 Lake Park',
-          lastUpdated: new Date(),
-          contactNumber: ['8788339915'],
-          location: [12, 123],
-          total: 12,
-          vacant: 123,
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          type: 'PVT',
-          address: 'Sidney No. 1 Lake Park',
-          lastUpdated: new Date(),
-          contactNumber: ['8788339915'],
-          location: [12, 123],
-          total: 12,
-          vacant: 123,
-        },
-      ],
+      data: result.data.map((res) => ({ _id: res.ts, ...res.data })),
     })
   );
 }
