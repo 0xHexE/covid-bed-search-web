@@ -10,7 +10,7 @@ export interface Hospital {
   name: string;
   type: string;
   address: string;
-  lastUpdated: string;
+  lastUpdated: { '@ts': string };
   contactNumber: number[];
   location: number[];
   total: number;
@@ -32,7 +32,7 @@ export default async function (req, res) {
   //     Lambda("X", Get(Var("X")))
   // )
 
-  const result = await adminClient.query<{ data: FaunaResponse<Hospital[]>[] }>(
+  const result = await adminClient.query<{ data: FaunaResponse<Hospital>[] }>(
     q.Map(
       // iterate each item in result
       q.Paginate(
@@ -53,7 +53,11 @@ export default async function (req, res) {
         occupied: Math.floor(Math.random() * 200),
         vacant: Math.floor(Math.random() * 200),
       },
-      data: result.data.map((res) => ({ _id: res.ts, ...res.data })),
+      data: result.data.map((res) => ({
+        _id: res.ts,
+        ...res.data,
+        lastUpdated: res.data.lastUpdated['@ts'],
+      })),
     })
   );
 }

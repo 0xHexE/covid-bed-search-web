@@ -78,12 +78,6 @@ export function MainTableViewer() {
             <Menu.Item key="hospital-beds">Hospital Beds</Menu.Item>
             <Menu.Item key="ventilators">Ventilators</Menu.Item>
           </Menu>
-
-          <img
-            src="https://satejpatil.com/wp-content/uploads/2020/02/suggistions.jpg"
-            className="promo"
-            alt="Promo"
-          />
         </div>
         <div className="main-container">
           {!data ? (
@@ -96,12 +90,6 @@ export function MainTableViewer() {
               <Statistics input={data.data} statistics={data.statistics} />
             </>
           )}
-
-          <img
-            src="https://satejpatil.com/wp-content/uploads/2020/02/suggistions.jpg"
-            className="promo-2"
-            alt="Promo"
-          />
         </div>
       </div>
     </>

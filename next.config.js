@@ -3,13 +3,15 @@ const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
 const { nextI18NextRewrites } = require('next-i18next/rewrites');
-
 // Where your antd-custom.less file lives
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, './assets/antd-custom.less'), 'utf8')
 );
 
-const localeSubpaths = {};
+const localeSubpaths = {
+  en: 'en',
+  mr: 'mr',
+};
 
 module.exports = withLess({
   lessLoaderOptions: {
