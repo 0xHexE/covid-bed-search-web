@@ -7,7 +7,7 @@ function HomePage() {
   return (
     <DefaultLayout>
       <Head>
-        <title>Corona Bed Search</title>
+        <title>Corona Bed Search Kolhapur</title>
       </Head>
 
       <SearchPlace />
